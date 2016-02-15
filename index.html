@@ -67,6 +67,22 @@
          console.log(response);
       }, {scope: 'publish_actions'});
     }
+
+    function publishTestPost () {
+      var imageUrl = prompt("Please enter your image URL");
+      FB.api(
+        "/me/photos",
+        "POST",
+        {
+          "url": imageUrl
+        },
+        function (response) {
+          if (response && !response.error) {
+            console.log(response);
+          }
+        }
+      );
+    }
   </script>
   <h1>social-publish</h1>
   <p>A small application that shows how you can publish to social media networks.</p>
@@ -82,5 +98,6 @@
   </div>
   <div id="status"></div>
   <div><button onClick="requestPostingPermissions()">Request Posting Permissions</button></div>
+  <div><button onClick="publishTestPost()">Publish Test Ppost</button></div>
 </body>
 </html>
