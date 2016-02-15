@@ -61,6 +61,12 @@
           'Thanks for logging in, ' + response.name + '!';
       });
     }
+
+    function requestPostingPermissions() {
+      FB.login(function(response) {
+         console.log(response);
+      }, {scope: 'publish_actions'});
+    }
   </script>
   <h1>social-publish</h1>
   <p>A small application that shows how you can publish to social media networks.</p>
@@ -70,8 +76,11 @@
     data-width="450"
     data-show-faces="true">
   </div>
-  <div><fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-  </fb:login-button></div>
+  <div>
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
+  </div>
   <div id="status"></div>
+  <div><button onClick="requestPostingPermissions()">Request Posting Permissions</button></div>
 </body>
 </html>
